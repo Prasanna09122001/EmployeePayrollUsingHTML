@@ -24,7 +24,8 @@
             <div class="row">
                 <label>Name: </label>
                 <input name="name" type="text" id="name" placeholder="Enter Name" class="input-text"
-                 onchange="nameChange(event)" />
+                 onchange="nameChange(event)"/>
+                 <error-output class="text-error" for="text" style="color: red;"></error-output>
             </div>
 
 
@@ -228,6 +229,14 @@
     function cancelclick(){
         window.location.href="dummy.html";
     }
+    const text = document.querySelector('#name');
+        const texterror = document.querySelector('.text-error');
+        text.oninput=function(){
+            let NameRegex = RegExp('^[A-Z]{1}[a-zA-z\\s]{2,}$');
+            if(NameRegex.test(text.value))
+                texterror.textContent = "";
+            else  texterror.textContent="Name is Incorrect";
+        } 
 </script>
 <style>
     body {
